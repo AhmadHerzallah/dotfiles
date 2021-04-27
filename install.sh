@@ -77,7 +77,6 @@ eval "xdg-open https://www.mozilla.org/en-US/firefox/developer/"
 
 # Communication
 eval "open https://slack.com/downloads/linux"
-eval "open https://github.com/chrisknepper/android-messages-desktop"
 
 # Miscellaneous
 eval "open https://www.spotify.com/us/download/linux/"

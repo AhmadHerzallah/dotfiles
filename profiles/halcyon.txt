@@ -1,0 +1,8 @@
+[/]
+background-color='#1D2433'
+bold-color='#8695B7'
+bold-color-same-as-fg=false
+foreground-color='#A2AABC'
+palette=['#171C28', '#EF6B73', '#BAE67E', '#FFD580', '#5CCFE6', '#C3A6FF', '#5CCFE6', '#D7DCE2', '#8695B7', '#F07078', '#BAE67E', '#FFD580', '#5CCFE6', '#C3A6FE', '#5CCFE6', '#D7DCE2']
+use-theme-colors=false
+visible-name='halcyon'

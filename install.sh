@@ -49,6 +49,10 @@ eval "sh -c '$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-z
 printf "${YELLOW}Copying ZSH config into ~/.zshrc...${NORMAL}\n"
 eval "cp ./zshrc ~/.zshrc"
 
+# Copy Bash config
+printf "${YELLOW}Copying ZSH config into ~/.zshrc...${NORMAL}\n"
+eval "cp ./bashrc ~/.bashrc"
+
 # Install fonts
 eval "sh scripts/fonts.sh"
 

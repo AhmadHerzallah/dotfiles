@@ -14,6 +14,7 @@
 - [Yarn](https://yarnpkg.com/en/)
 
 </details>
+<details>
 
 <summary>CLI Tools & Utilities</summary>
 

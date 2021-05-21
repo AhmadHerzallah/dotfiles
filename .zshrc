@@ -59,7 +59,8 @@ source "/home/ahmad/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-them
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -94,7 +95,7 @@ source "/home/ahmad/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-them
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -105,6 +106,7 @@ plugins=(
   osx
   you-should-use
   zsh-autosuggestions
+  alias-tips
 )
 
 # source $ZSH/oh-my-zsh.sh
@@ -138,7 +140,8 @@ plugins=(
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshconfig="code ~/.zshrc"
-alias subl="open -a 'Sublime Text'"
+# alias subl="open -a 'Sublime Text'"
+alias refresh="source ~/.zshrc"
 alias npmplease="rm -rf node_modules/ && rm -f package-lock.json && npm install"
 alias yarnplease="rm -rf node_modules/ && rm yarn.lock && yarn"
 alias gsc="git stash clear"
@@ -156,6 +159,18 @@ alias dev="yarn run dev"
 alias build="yarn run build"
 alias branches="git branch --sort=-committerdate"
 alias vsc="code ."
+alias apicall="curl -X POST \
+              -d grant_type=refresh_token \
+              -d refresh_token=AQAEcKmTQJUVctWqAtYliRf_EixdRQAgN2dGP3T1wvRBnn7N5TtRYTrpEhF-mm-U4CSPnmZ0WToAZyNUoX4URi_3H8mT_XA1JTh4TGBZC25BtlRP8hCQFYsRts2Pym2rSUc \
+              -d client_id=fdf4ebde87024efd9eca75e74263f7e6 \
+              -d client_secret=affdc690e60c448d92b054592916b24e \
+              https://accounts.spotify.com/api/token
+"
+alias cp="sh ~/cppconstructor.sh"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias rs="yarn reexjs-cli"
+
+
 
 clone() {
   git clone "$1" && cd "$(basename "$1" .git)"
@@ -193,7 +208,6 @@ load-nvmrc
 
 # https://github.com/zsh-users/zsh-syntax-highlighting
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/rupa/z
 # Move next only if `homebrew` is installed
@@ -208,11 +222,20 @@ if [ -f /Users/brittanychiang/.tnsrc ]; then
 fi
 ###-tns-completion-end-###
 
+###-###########-###
+###-transfer.sh-###
+transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+###-transfer.sh-###
+###-###########-###
+
 # for signing github commits
 export GPG_TTY=$(tty)
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export ANDROID_HOME=/usr/local/share/android-sdk
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vim"
 
-source /home/ahmad/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="./bin:$PATH:/snap/bin"
+
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word

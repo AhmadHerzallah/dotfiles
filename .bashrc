@@ -93,6 +93,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias vsc="code ."
 alias cp="sh ~/cppconstructor.sh"
+alias welcomeme="sh ~/welcome.sh"
+alias cfpmc="sh ~/cfpmc.sh"
+alias mohmc="sh ~/mohmc.sh"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -156,3 +159,4 @@ transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfe
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias fileRun="python3 -u '/home/ahmad/code/otherStuff/diaa/finalProject/main.py'"

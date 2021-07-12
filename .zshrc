@@ -239,3 +239,9 @@ export PATH="./bin:$PATH:/snap/bin"
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}

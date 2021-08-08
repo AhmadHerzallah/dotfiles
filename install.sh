@@ -41,36 +41,28 @@ eval "nvm alias default node"
 printf "\n ${GREEN}Installing Node & Npm...${NORMAL}\n"
 eval "nvm install node"
 
-# Install Oh My Zsh
-printf "\n${BLUE}Installing Oh My Zsh...${NORMAL}\n"
-eval "sh -c '$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
-
-# Copy ZSH config
-printf "${YELLOW}Copying ZSH config into ~/.zshrc...${NORMAL}\n"
-eval "cp ./zshrc ~/.zshrc"
-
 # Copy Bash config
-printf "${YELLOW}Copying ZSH config into ~/.zshrc...${NORMAL}\n"
-eval "cp ./bashrc ~/.bashrc"
+# printf "${YELLOW}Copying ZSH config into ~/.zshrc...${NORMAL}\n"
+# eval "cp ./bashrc ~/.bashrc"
 
 # Install fonts
-eval "sh scripts/fonts.sh"
+# eval "sh scripts/fonts.sh"
 
 # Set up VS Code Settings and Extensions
-eval "sh scripts/vscode.sh"
+# eval "sh scripts/vscode.sh"
 
 
 # Add global NPM packages
-printf "\n${GREEN}Installing global npm packages for Spaceship ZSH Prompt, Trash CLI, Gulp CLI, Docker CLI, Gatsby CLI, Vue CLI...${NORMAL}\n"
-eval "npm install -g spaceship-prompt trash-cli"
+# printf "\n${GREEN}Installing global npm packages for Spaceship ZSH Prompt, Trash CLI, Gulp CLI, Docker CLI, Gatsby CLI, Vue CLI...${NORMAL}\n"
+# eval "npm install -g spaceship-prompt trash-cli"
 
 # Add terminal profiles
-printf "\n${GREEN} Adding terminal profiles"
-eval "./gnome-terminal-profile.sh import profiles/codespace.txt"
-eval "./gnome-terminal-profile.sh import profiles/halcyon.txt"
+# printf "\n${GREEN} Adding terminal profiles"
+# eval "./gnome-terminal-profile.sh import profiles/codespace.txt"
+# eval "./gnome-terminal-profile.sh import profiles/halcyon.txt"
 
 # Refresh ZSH config
-eval "source ~/.zshrc"
+# eval "source ~/.zshrc"
 
 
 # Browsers
